@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcmp-demo-jenkins
+  namespace: ocp-on-aws-b9eb-ns
+spec:
+  ports:
+  - name: mcmp-demo-jenkins-service
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/component: jenkins-master
+    app.kubernetes.io/instance: jenkins-1-1
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

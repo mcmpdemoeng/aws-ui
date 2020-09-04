@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2020-07-22T16:10:38Z"
+  labels:
+    app: ui
+    chart: ui-1
+    group: frontend
+    heritage: Tiller
+    release: mcmp-demo
+  name: mcmp-demo-ui
+  namespace: default
+  resourceVersion: "2017822"
+  selfLink: /api/v1/namespaces/default/services/mcmp-demo-ui
+  uid: e2058690-cc35-11ea-9e48-06c4ed800ba0
+spec:
+  clusterIP: 172.30.19.206
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: ui-service
+    nodePort: 30015
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: ui
+    release: mcmp-demo
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
